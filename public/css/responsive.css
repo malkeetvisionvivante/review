@@ -1,0 +1,539 @@
+@media (min-width: 576px) {
+  .container-fluid {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-fluid {
+    padding: 0 1rem;
+  }
+  .newsfeed-sticky{
+    position: -webkit-sticky;
+    position: sticky;
+    top:75px;
+    z-index: 1020;
+}
+}
+
+@media (min-width: 992px) {
+  .container-fluid {
+    padding: 0 3rem;
+  }
+  .newsfeed-sticky{
+    top:86px;
+}
+}
+
+@media (min-width: 1200px) {
+  .container-fluid {
+    padding: 0 7rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container-fluid {
+    padding: 0 10rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container-fluid {
+    padding: 0 12rem;
+  }
+}
+
+
+
+
+
+
+
+@media(max-width:1366px){
+  .large-h1 {
+    font-size: 33px;
+}
+.form-corner-circles{
+  width:60%;
+}
+}
+
+
+@media (max-width:1023px) {
+  h1, .h1 {
+    font-size: 24px;
+  }
+  h2, .h2 {
+    font-size: 22px;
+  }
+  h3, .h3 {
+    font-size: 20px;
+  }
+  h4, .h4 {
+    font-size: 16px;
+  }
+  h5, .h5 {
+    font-size: 14px;
+  }
+  .btn{
+    padding: 0.6rem 1rem;
+  }
+  .header {
+    height: 100%;
+  }
+  .form-div{
+    padding:1rem;
+  }
+  .large-h1 {
+    font-size: 25px;
+}
+.company-number h2{
+  font-size:33px;
+}
+.manager-ul li {
+  width: 48.7%;
+}
+.social-media a{
+  font-size:18px;
+}
+.logo {
+  width: 190px;
+  max-width: 190px;
+}
+.large-rating{
+  font-size:65px;
+}
+.circle-progress {
+  width: 140px;
+  height: 140px;
+}
+.circle-progress .circle-progress-value{
+  line-height:152px;
+}
+.form-corner-circles{
+  width:50%;
+}
+#my_notifications .media-body {
+  margin-right: 8rem;
+}
+.btn-section-sticky-top-all {
+  top: 77px;
+}
+}
+
+
+
+
+
+
+@media (max-width:767px) {
+  body {
+    font-size: 14px;
+  }
+  h1, .h1 {
+    font-size: 24px;
+  }
+  h2, .h2 {
+    font-size: 22px;
+  }
+  h3, .h3 {
+    font-size: 18px;
+  }
+  h4, .h4 {
+    font-size: 16px;
+  }
+  h5, .h5 {
+    font-size: 14px;
+  }
+  .btn {
+    font-size: 13px;
+    padding: 0.4rem 1rem;
+  }
+  .btn-success{
+    height:40px;
+  }
+  .with-anonymously {
+    line-height: 18px;
+}
+  .logo {
+    width: 155px;
+    max-width:155px;
+  }
+  .header {
+    height: 100%;
+  }
+  .input-group .Search {
+    height: 45px;
+    padding: 5px 0px 5px 15px;
+    font-size: 15px;
+  }
+  .form-div {
+    padding: 1rem;
+  }
+  .card{
+    padding:0.5rem;
+  }
+  .card-two .h5-height {
+    height: 25px;
+  }
+  .companies-card .col-md {
+    margin-bottom: 15px;
+  }
+  .arrow-collapse {
+    display: none;
+  }
+  .media-img-container{
+    width:75px;
+    height:75px;
+    padding:10px;
+    margin-right: 10px;
+  }
+  .card.small {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.custom-table th, .custom-table td {
+  font-size: 13px;
+  padding: 6px;
+}
+table .lead {
+  font-size: 13px;
+}
+.custom-nav-tabs .nav-link{
+  justify-content: center;
+}
+.custom-nav-tabs .nav-link.active {
+  padding: 0.5rem;
+}
+.department-ul li a{
+  padding: 10px;
+  font-size: 14px;
+}
+.department-ul li {
+  display: inline-block;
+  margin: 3px 1px;
+}
+.manager-ul li {
+  width: 100%;
+}
+.form-control{
+  font-size:13px;
+  padding:0 0 0 15px;
+  height:35px;
+}
+.form-icon-small {
+  padding: 0 10px;
+  font-size: 15px;
+}
+.sticky-top-mobile{
+  position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+.score p{
+  font-size:14px;
+  font-weight:500;
+}
+.footer-nav a{
+  line-height:22px;
+}
+.social-media a {
+  font-size:15px;
+  padding: 0px 4px 5px 4px;
+}
+.card-two {
+  height: auto;
+}
+#msform table th, #msform table td {
+  font-size: 14px; 
+}
+.r-nowrap{
+  white-space: nowrap;
+}
+.r-font-weight-700{
+  font-weight:700;
+}
+.r-font-weight-500{
+  font-weight:500;
+}
+#msform table i.fa-thumbs-up {
+  font-size: 17px;
+  width: 30px;
+  height: 30px;
+  padding-top: 4px;
+}
+.company-number{
+    margin:3rem 0;
+}
+.thumb{
+    padding-top: 5px;
+    width: 27px;
+    height: 27px;
+}
+.thumb i.fa-thumbs-up {
+  font-size: 15px;
+}
+.chart-container{
+  position: relative;
+}
+.devider-list {
+  padding: 10px;
+}
+/*home after login css*/
+.reviews--custom--tabs {
+  padding:3px;
+  margin-left: -8px;
+  margin-right: -8px;
+}
+.reviews--custom--tabs .nav-link {
+  border:0;
+  color:#444;
+  padding: 0.5rem 0.5rem;
+}
+.card.small .media-body .d-flex p {
+  white-space:nowrap;
+}
+.card.small .media-body p a{
+  font-size: 14px;
+  font-weight: 800;
+}
+.our-values .col-md-5 {
+  padding: 1rem;
+  border-bottom: 1px solid #e6e6e6;
+}
+.our-values .col-md-5:nth-last-child(2){
+  border-bottom: 1px solid #e6e6e6;
+}
+.card.small, .card.small-card {
+  padding: 0.6rem;
+}
+.score_tabs .nav-tabs .nav-link{
+  padding:10px 25px;
+}
+.coming-soon::before{
+  font-size:10px;
+  padding: 2px 7px;
+}
+.summary-history-tabs .d-flex img{
+  width:40px;
+}
+.circle-progress {
+  width: 120px;
+  height: 120px;
+}
+.circle-progress .circle-progress-value {
+  line-height: 125px;
+  font-size: 30px;
+}
+.large-rating {
+  text-align: center;
+  display: block;
+}
+.custom-nav-tabs .nav-item {
+  width: 50%;
+}
+.feedback-score {
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+  right: -8%;
+}
+.owl-nav .owl-prev, .owl-nav .owl-next {
+  width: 30px;
+  height: 30px;
+  right: -13px;
+}
+.owl-nav .owl-prev {
+  left: -13px;
+}
+.profile-section-sticky-top{
+  position:relative;
+  top:0;
+  z-index:10;
+}
+.score_tabs .nav-tabs .nav-item{
+  width:120px;
+}
+.owl-nav .owl-prev span, .owl-nav .owl-next span {
+  font-size: 32px;
+  line-height: 24px;
+}
+.modal-tooltip {
+  transform: translate(-50%, -50%);
+}
+.modal-tooltip{
+  width:90%;
+}
+.peer-margin {
+  margin-left: 1rem;
+}
+.company-overall-score{
+  font-size:12px;
+}
+.company-overall-score div {
+  margin-bottom: 3px;
+}
+.company-overall-score img {
+  width: 22px;
+}
+.score-flex-responsive{
+  display:flex !important;
+  align-items:center;
+  margin-bottom:7px;
+}
+.score-flex-responsive .card-small-score-sec{
+  margin-top:0;
+  margin-left:10px;
+}
+.company-overall-score-vertical {
+  display: flex;
+  justify-content: space-between;
+}
+.company-overall-score-vertical .seprate{
+  display:inline-block;
+}
+.company-overall-score-vertical div{
+  margin-bottom:7px;
+}
+.company-overall-score-vertical img{
+  margin:0px 3px 0 0px;
+}
+.btn-section-sticky-top{
+  position: -webkit-sticky;
+    position: sticky;
+    top: 103px;
+    z-index: 1020;
+}
+.form-corner-circles{
+  width:25%;
+}
+.btn-custom-design{
+  font-size:14px;
+}
+.after-login-heading-div {
+  margin: 0;
+}
+.share-colleagues-text{
+  font-size:20px;
+}
+.onboarding_flow_modal{
+  width:90%;
+  height:400px;
+  padding: 2.5rem 1rem 2.5rem 1rem;;
+}
+.onboarding_flow_modal h3 {
+  font-size: 20px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.onboarding_flow_modal h4 {
+  font-size: 15px;
+}
+.media-padding-minus {
+  margin: 0;
+}
+.media-padding-minus-plus {
+  margin: 2rem 0rem 0 0rem;
+}
+.onboarding_flow_modal .btn-next{
+  font-size:16px;
+}
+.onboarding_flow_modal p {
+  font-size: 13px;
+  line-height: 16px;
+}
+.bottom-slug{
+  font-size:12px;
+}
+.image-flip {
+  width: 20px !important;
+}
+.header-nav .navbar-nav {
+  display: inline-flex;
+}
+.profile-image-style {
+  width: 35px;
+  height: 35px;
+}
+.header-nav .navbar-nav img{
+  width: 35px;
+  height: 35px;
+}
+.header-nav .navbar-nav .notification .nav-link {
+  width: 35px;
+  height: 35px;
+  padding-top:6px;
+}
+.header-nav .navbar-nav .nav-item .nav-link{
+  font-size:16px;
+}
+#my_notifications .media-body {
+  margin-right: 1rem;
+}
+#my_notifications .media-img-container {
+  width: 60px;
+  height: 60px;
+}
+.custom-nav-tabs-text-left .nav-item .nav-link {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+.card-with-border .media {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+#profiles_am_following .media {
+  padding: 10px 0;
+}
+#profiles_am_following .media-img-container {
+  width: 60px;
+  height: 60px;
+}
+.tooltip{
+  font-size:12px;
+}
+.btn-section-sticky-top-all{
+  top: 102px;
+}
+#comment_sign_up_popup{
+  min-width:100%;
+  max-width:100%;
+}
+#comment_sign_up_popup{
+  top:82px;
+}
+.profile-nav-image a {
+  width: 35px;
+  height: 35px;
+}
+.profile-nav-image a img{
+  width:100% !important;
+  height:100% !important;
+}
+}
+
+
+@media (max-width:320px){
+  .thumb i.fa-thumbs-up {
+    font-size: 14px;
+}
+.thumb {
+  padding-top: 5px;
+  width: 24px;
+  height: 24px;
+}
+.nav-pills .nav-link {
+  font-size:15px;
+}
+/*home after login css*/
+.reviews--custom--tabs .nav-link {
+  padding: 0.5rem 0.3rem;
+  font-size: 12px;
+}
+.company-overall-score img {
+  width: 20px;
+}
+.company-overall-score {
+  font-size: 11px;
+}
+}

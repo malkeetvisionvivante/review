@@ -1,0 +1,15 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+RewriteCond %{REQUEST_URI} !(\.csv|\.css|\.js|\.png|\.svg|\.jpg|\.gif|\.jpeg|robots\.txt)$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^/blog/
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(admin_data/reports/visitors|admin_data/reports/referrals|admin_data/reports/review|admin_data/reports/review_per_user|admin_data/reports/signup_user|admin_data/css|admin_data/images|admin_data/js|css|js|images|images/company|images/users)/(.*)$ public/$1/$2 [L,NC]

@@ -1,0 +1,117 @@
+
+@media (max-width:1023px) {
+  h1, .h1 {
+    font-size: 24px;
+  }
+  h2, .h2 {
+    font-size: 22px;
+  }
+  h3, .h3 {
+    font-size: 20px;
+  }
+  h4, .h4 {
+    font-size: 16px;
+  }
+  h5, .h5 {
+    font-size: 15px;
+  }
+  .form-div{
+    padding:1rem;
+  }
+  .large-h1 {
+    font-size: 35px;
+}
+.filter_open {
+  vertical-align: middle;
+  margin-left: 5px;
+}
+.sidebar{
+  left:-100%;
+  transition:all 400ms;
+  border-right: 1px solid #f1f1f1;
+}
+.sidebar.active{
+  left:0%;
+}
+.inner-container {
+  width: calc(100% - 20px - 0px);
+  margin-left: 10px;
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+.filter_open .bar1, .filter_open .bar2, .filter_open .bar3 {
+  width: 21px;
+  height: 2px;
+  background-color: #333;
+  margin: 4px 0;
+  transition: 0.4s;
+  display: block;
+}
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-8px, 1px);
+  transform: rotate(-45deg) translate(-8px, 1px);
+}
+.change .bar2 {opacity: 0;}
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-7px, -1px);
+  transform: rotate(45deg) translate(-7px, -1px);
+}
+}
+
+
+
+
+
+
+@media (max-width:767px) {
+  body {
+    font-size: 14px;
+  }
+  h1, .h1 {
+    font-size: 22px;
+  }
+  h2, .h2 {
+    font-size: 20px;
+  }
+  h3, .h3 {
+    font-size: 18px;
+  }
+  h4, .h4 {
+    font-size: 16px;
+  }
+  h5, .h5 {
+    font-size: 14px;
+  }
+  .btn {
+    font-size: 13px;
+  }
+  .logo {
+    width: 100px;
+  }
+  .large-h1 {
+    font-size: 22px;
+  }
+  .input-group .Search {
+    height: 45px;
+    padding: 5px 10px;
+  }
+  .form-div {
+    padding: 1rem;
+  }
+  .card{
+    padding:15px;
+  }
+  .card-two .h5-height {
+    height: 25px;
+  }
+  .companies-card .col-md {
+    margin-bottom: 15px;
+  }
+  .arrow-collapse {
+    display: none;
+  }
+  .img-widget {
+    width: 110px;
+    height: 110px;
+  }
+}

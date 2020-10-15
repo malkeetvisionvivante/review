@@ -1,0 +1,5 @@
+.error-message { color: red; float: left; width: 100%; }
+.img-widget.mb-custom { margin-bottom: 31px; }
+.line-height-20 { line-height: 20px; }
+.hide-detail{ display: none;}
+.hide-detail, .show-detail{ cursor: pointer; }
