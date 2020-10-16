@@ -101,7 +101,7 @@ class ManagerController extends Controller {
         $AdminNotificationModel->company_id =  $data->company_id;
         $AdminNotificationModel->save();
         
-        AdminNotification::addCompany($company->company_name, $data->first_name." ".$data->last_name, $data->email, "Onboard Tour");
+        AdminNotification::addCompany($company->company_name, $data->fullName(), $data->email, "Onboard Tour");
       }
       return response()->json(['status'=>true]);
     }
@@ -182,7 +182,8 @@ class ManagerController extends Controller {
         $data = User::find($request->selected);
         $data->claimed = 'yes';
       }
-      AdminNotification::isProfileMatch($request->firstname, $request->last_name, $request->email, Auth::user());
+      
+      //AdminNotification::isUserMatch($request->firstname, $request->last_name, $request->email);
       $data->name = $request->firstname;
       $data->last_name = $request->last_name;
       $data->email = $request->email;
@@ -197,11 +198,13 @@ class ManagerController extends Controller {
       $data->created_at = Carbon::now();
       $data->login_count = 1;
       $data->save();
+      
       Registermailchamp::register($data->id);
       if(Auth::loginUsingId($data->id)){
         Cookie::queue(Cookie::forget('referal_uid'));
         Cookie::queue(Cookie::forget('invitation_id')); 
       }
+      AdminNotification::isProfileMatch($request->firstname, $request->last_name, $request->email, Auth::user());
       if(Cookie::get('loginPreviusUrl')){
         $path = Cookie::get('loginPreviusUrl');
         Cookie::queue(Cookie::forget('loginPreviusUrl'));
@@ -326,8 +329,8 @@ class ManagerController extends Controller {
         $user->login_count = 1;
         $user->save();
         Registermailchamp::register($user->id);
-        AdminNotification::isProfileMatchSocial($user->name, $user->last_name, $user->email);
         Auth::loginUsingId($user->id);
+        AdminNotification::isProfileMatch($user->name, $user->last_name, $user->email, $user);
         Cookie::queue(Cookie::forget('invitation_id'));
         Session::forget('signUpMatchUserData');
 
@@ -355,8 +358,8 @@ class ManagerController extends Controller {
         $user->login_count = 1;
         $user->save();
         Registermailchamp::register($user->id);
-        AdminNotification::isProfileMatchSocial($user->name, $user->last_name, $user->email);
         Auth::loginUsingId($user->id);
+        AdminNotification::isProfileMatch($user->name, $user->last_name, $user->email, $user);
         Cookie::queue(Cookie::forget('invitation_id'));
         Session::forget('signUpMatchUserData');
 

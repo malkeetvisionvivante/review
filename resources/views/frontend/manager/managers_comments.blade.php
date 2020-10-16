@@ -91,7 +91,7 @@
             @endif
             <li><a href="#" class="nav-link"><img src="{{ url('/images/share-icon.png') }}"/></a></li>
           </ul>
-          @if (!($review->isFlagged()))
+          @if (!($review->isFlagged()) && Auth::user()->isAbleToAdd() )
           <a href="javascript:void(0);" data-review-id="{{ $review->id }}" data-manager-id="{{ $review->user_id }}" class="text-muted-dark report-btn"><u>Report</u></a>
           @endif
         </div>

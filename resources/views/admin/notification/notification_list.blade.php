@@ -74,7 +74,7 @@
             </div>
             <div class="col- ml-4">
                 <span class="text-muted" style="font-size: 14px;">
-                    Showing {{count($notifications)}} of {{$notificationsCount}} Results
+                    Showing {{count($notifications)}} of {{$notifications->total() }} Results
                 </span>
             </div>
         </div>

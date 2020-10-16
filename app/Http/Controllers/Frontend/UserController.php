@@ -142,7 +142,6 @@ class UserController extends Controller
             $data->login_count = 1;
             $data->save();
             Auth::loginUsingId($data->id);
-            AdminNotification::isProfileMatchSocial($data->name, $data->last_name, $data->email);
             AdminNotification::isUserMatch($data->name, $data->last_name, $data->email);
             Registermailchamp::register($data->id);
             toastr()->success('User Created successfully!'); 
@@ -508,7 +507,7 @@ class UserController extends Controller
       if($reviewaData){
         $alreadyReview = 1;
       }
-      if($reviewaData14days > 0 ){
+      if($reviewaData14days >= 2 ){
         $reviewLast14Days = 1;
       }
     }
@@ -557,7 +556,8 @@ class UserController extends Controller
       $AdminNotificationModel->save();
 
       $Reviews = Reviews::find($insert_data->id);
-      AdminNotification::lowScoreNotification($Reviews->customerName(), $Reviews->userName(), $sum_point); 
+      $sc = number_format((float)$sum_point, 1, '.', '');
+      AdminNotification::lowScoreNotification((string)$Reviews->customerName(), (string)$Reviews->userName(), (string)$sc, (string)$Reviews->user_id);   
     }
 
     toastr()->success('Review submitted successfully.');
@@ -617,6 +617,7 @@ class UserController extends Controller
           $AdminNotificationModel = AdminNotificationModel::find($AdminNotificationModel->id);
           $AdminNotificationModel->number_of_reviews = $AdminNotificationModel->number_of_reviews + 1;
           $AdminNotificationModel->status="open";
+          $AdminNotificationModel->updateTimestamps();
           $AdminNotificationModel->save();
         } else {
         $AdminNotificationModel = new AdminNotificationModel;

@@ -378,8 +378,8 @@ class SearchController extends Controller {
       $AddedProfiles->save();
 
       AdminNotification::spamBehavior(Auth::user()->name, Auth::user()->last_name, Auth::user()->email, Auth::user()->id);
-      AdminNotification::isProfileMatch($data->name, $data->last_name, $data->email, Auth::user());
-      AdminNotification::isUserMatch($data->name, $data->last_name, $data->email);
+      //AdminNotification::isProfileMatch($data->name, $data->last_name, $data->email, Auth::user());
+      AdminNotification::isUserMatchWithAddNewCollegue($data->name, $data->last_name, $data->email, $data->id);
       Session::forget('searchAddColleagueMatchUserData');
       return json_encode(['status' => true, 'id' => $data->id,'message' => "New profile addition successful!"]);
     } else {

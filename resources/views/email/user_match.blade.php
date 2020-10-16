@@ -37,7 +37,7 @@
 														<td valign="top">
 															<div id="body_content_inner">
 																<h1>Hi, Admin</h1>
-																<p> Sign up user duplication alert: user sign up potential identity conflict. </p>
+																<p>Potential user duplication from user sign up. </p>
 																<p>Email : <strong>{{ $user_email }}</strong></p>
 																<p>First Name : <strong> {{ $first_name }}</strong></p>
 																<p>Last Name : <strong> {{ $last_name }}</strong></p>

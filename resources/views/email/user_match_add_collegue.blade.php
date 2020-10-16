@@ -37,7 +37,7 @@
 														<td valign="top">
 															<div id="body_content_inner">
 																<h1>Hi, Admin</h1>
-																<p>Potential user duplication from social sign up. </p>
+																<p>Potential user duplication from Add new colleague. </p>
 																<p>Email : <strong>{{ $user_email }}</strong></p>
 																<p>First Name : <strong> {{ $first_name }}</strong></p>
 																<p>Last Name : <strong> {{ $last_name }}</strong></p>
@@ -45,29 +45,29 @@
 															</div>
 														</td>
 													</tr>
+													<tr>
+														<td valign="top">
+															<div id="body_content_inner">
+																<h1>conflict with</h1>
+															</div>
+														</td>
+													</tr>
+													@foreach($users as $user)
+													<tr>
+														<td valign="top">
+															<div id="body_content_inner">
+																<p>Email : <strong>{{ $user->email }}</strong></p>
+																<p>First Name : <strong> {{ $user->name }}</strong></p>
+																<p>Last Name : <strong> {{ $user->last_name }}</strong></p>
+																<p>Created At : <strong> {{ $user->created_at }}</strong></p>
+															</div>
+														</td>
+													</tr>
+													@endforeach
 												</table>
 												<!-- End Content -->
 											</td>
 										</tr>
-										<tr>
-											<td valign="top">
-												<div id="body_content_inner">
-													<h1>conflict with</h1>
-												</div>
-											</td>
-										</tr>
-										@foreach($users as $user)
-										<tr>
-											<td valign="top">
-												<div id="body_content_inner">
-													<p>Email : <strong>{{ $user->email }}</strong></p>
-													<p>First Name : <strong> {{ $user->name }}</strong></p>
-													<p>Last Name : <strong> {{ $user->last_name }}</strong></p>
-													<p>Created At : <strong> {{ $user->created_at }}</strong></p>
-												</div>
-											</td>
-										</tr>
-										@endforeach
 									</table>
 									<!-- End Body -->
 								</td>

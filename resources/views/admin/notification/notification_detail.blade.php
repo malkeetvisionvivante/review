@@ -140,15 +140,22 @@
 
                     <!---------------------------->
                     @elseif($notification->type == 'similarNamesMatch')    
-                    <h3>Review By</h3>
-                    <p>Name: {{ $notification->lowScoreCustomerName() }}</p>
-                    <p>Email: {{ $notification->lowScoreCustomerEmail() }}</p>
+                    <h3>User name</h3>
+                    <p>Name: {{ $notification->similarMatchUserName() }}</p>
+                    <p>Email: {{ $notification->similarMatchUserEmail() }}</p>
                     <hr>
                     
-                    <h3>Review To</h3>
-                    <p>Name: {{ $notification->lowScoreUserName() }}</p>
-                    <p>Email: {{ $notification->lowScoreUserEmail() }}</p>
+                    <h3>Conflict With</h3>
+                    @foreach($notification->similarMatchUsersList() as $user)
+                        <p>Name: {{ $user->fullName() }}</p>
+                        <p>Email: {{ $user->email }}</p>
+                        @if(!$loop->last)
+                        <hr>
+                        @endif
+                    @endforeach
                     <hr>
+
+
 
                     @endif
                 </div>

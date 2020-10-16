@@ -75,8 +75,8 @@ class SocialMatchController extends Controller {
           $user->login_count = 1;
           $user->save();
           Registermailchamp::register($user->id);
-          AdminNotification::isProfileMatchSocial($user->name, $user->last_name, $user->email);
           Auth::loginUsingId($user->id);
+          AdminNotification::isProfileMatchSocial($user->name, $user->last_name, $user->email);
           Cookie::queue(Cookie::forget('referal_uid'));
           Cookie::queue(Cookie::forget('invitation_id'));
           Session::forget('socialMatchUserDAta');
@@ -126,8 +126,9 @@ class SocialMatchController extends Controller {
           $user->login_count = 1;
           $user->save();
           Registermailchamp::register($user->id);
-          AdminNotification::isProfileMatchSocial($user->name, $user->last_name, $user->email);
+          
           Auth::loginUsingId($user->id);
+          AdminNotification::isProfileMatchSocial($user->name, $user->last_name, $user->email);
           Cookie::queue(Cookie::forget('referal_uid'));
           Cookie::queue(Cookie::forget('invitation_id'));
           Session::forget('socialMatchUserDAta');
@@ -202,8 +203,9 @@ class SocialMatchController extends Controller {
             $createUser->login_count = 1;
             $createUser->save();
             Registermailchamp::register($createUser->id);
-            AdminNotification::isProfileMatchSocial($createUser->name, $createUser->last_name, $createUser->email);
+            
             Auth::loginUsingId($createUser->id);
+            AdminNotification::isProfileMatchSocial($createUser->name, $createUser->last_name, $createUser->email);
             toastr()->success('Login successful!'); 
             Cookie::queue(Cookie::forget('referal_uid'));
             Cookie::queue(Cookie::forget('invitation_id'));
@@ -254,9 +256,9 @@ class SocialMatchController extends Controller {
             $createUser->login_count = 1;
             $createUser->save();
             Registermailchamp::register($createUser->id);
-            AdminNotification::isProfileMatchSocial($createUser->name, $createUser->last_name, $createUser->email);
+            
             Auth::loginUsingId($createUser->id);
-
+            AdminNotification::isProfileMatchSocial($createUser->name, $createUser->last_name, $createUser->email);
             toastr()->success('Login successful!'); 
             Cookie::queue(Cookie::forget('referal_uid'));
             Cookie::queue(Cookie::forget('invitation_id'));
@@ -330,8 +332,9 @@ class SocialMatchController extends Controller {
             $createUser->login_count = 1;
             $createUser->save();
             Registermailchamp::register($createUser->id);
-            AdminNotification::isProfileMatchSocial($createUser->name, $createUser->last_name, $createUser->email);
+            
             Auth::loginUsingId($createUser->id);
+            AdminNotification::isProfileMatchSocial($createUser->name, $createUser->last_name, $createUser->email);
             toastr()->success('Login successful!'); 
             Cookie::queue(Cookie::forget('referal_uid'));
             Cookie::queue(Cookie::forget('invitation_id'));
@@ -382,8 +385,9 @@ class SocialMatchController extends Controller {
             $createUser->login_count = 1;
             $createUser->save();
             Registermailchamp::register($createUser->id);
-            AdminNotification::isProfileMatchSocial($createUser->name, $createUser->last_name, $createUser->email);
+            
             Auth::loginUsingId($createUser->id);
+            AdminNotification::isProfileMatchSocial($createUser->name, $createUser->last_name, $createUser->email);
             toastr()->success('Login successful!'); 
             Cookie::queue(Cookie::forget('referal_uid'));
             Cookie::queue(Cookie::forget('invitation_id'));

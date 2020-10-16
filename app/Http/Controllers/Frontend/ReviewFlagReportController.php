@@ -25,7 +25,7 @@ class ReviewFlagReportController extends Controller {
       $flag->flagger_id = Auth::user()->id;
       if($flag->save()){
         $count = ReviewFlagReport::where('review_id', $reviewId)->count();
-        $reviewData = ReviewFlagReport::where('review_id', $reviewId)->get();
+        $reviewData = ReviewFlagReport::where('review_id', $reviewId)->orderBy('id', 'DESC')->get();
         $reviewData1 = Reviews::find($reviewId);
         AdminNotification::reviewReport(Auth::user(), User::find($managerId), $count, $reviewData, $reviewData1->comment);  
         if($count >=5){
@@ -38,6 +38,7 @@ class ReviewFlagReportController extends Controller {
         	$AdminNotificationModel = AdminNotificationModel::find($AdminNotificationModel->id);
         	$AdminNotificationModel->number_of_reports = $AdminNotificationModel->number_of_reports + 1;
         	$AdminNotificationModel->status="open";
+          //$AdminNotificationModel->updateTimestamps();
         	$AdminNotificationModel->save();
         } else {
 		    $AdminNotificationModel = new AdminNotificationModel;
@@ -48,10 +49,6 @@ class ReviewFlagReportController extends Controller {
 		    $AdminNotificationModel->save();
 		}
         return response()->json(array('success' => true));
-      }
-    }else{
-      if($flag->delete()){
-        return response()->json(array('success' => true)); 
       }
     }
   }

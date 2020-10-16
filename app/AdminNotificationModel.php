@@ -19,8 +19,18 @@ use Carbon\Carbon;
 class AdminNotificationModel extends Model {
 
   	protected $table = 'admin_notifications';
+    public $timestamps = true;
 
-   	public function numberOfReportCount(){
+   	public function similarMatchUsersList(){
+      $usersArray = json_decode($this->match_users);
+      if(count($usersArray) > 0){
+        if($users = User::whereIn('id',$usersArray)->get()){
+          return $users;
+        }
+      }
+      return [];
+    }
+    public function numberOfReportCount(){
       return $ReviewFlagReport = ReviewFlagReport::where('review_id' , $this->review_id )->count();
     }
     public function reportBy(){
@@ -43,7 +53,7 @@ class AdminNotificationModel extends Model {
     //'commentReportLimit','reviewsByRevieweeLimit','newCompanyAdded','userCompanyChange','spamBehavior','lowScore','similarNamesMatch'
 
     if($this->type == 'lowScore'){
-      return $this->lowScoreCustomerName()." has left a ".$this->reviewScore()." sroce on ".$this->lowScoreUserName();
+      return $this->lowScoreCustomerName()." has left a ".$this->reviewScore()." score on ".$this->lowScoreUserName();
     }
 
     if($this->type == 'commentReportLimit'){   
@@ -51,7 +61,7 @@ class AdminNotificationModel extends Model {
     }
 
     if($this->type == 'similarNamesMatch'){
-      return "users exist with identical or highly similar names, with the same company, there should be a notification sent to admin";
+      return "users exist with identical or highly similar name with: ".$this->similarMatchUserName();
     }
 
     if($this->type == 'reviewsByRevieweeLimit'){
@@ -72,9 +82,9 @@ class AdminNotificationModel extends Model {
 
     if($this->type == 'newCompanyAddedThroughFooter'){
       if($this->user_id){
-        return "New Company: ".$this->company_name." company has been requested for addition by user ".$this->companyUserName();
+        return "New Company: ".$this->company_name." company has been requested for addition by `user` ".$this->companyUserName();
       } else {
-        return "New Company: ".$this->company_name." company has been requested for addition by guest";
+        return "New Company: ".$this->company_name." company has been requested for addition by `guest`";
       }
     }    
    
@@ -132,6 +142,14 @@ class AdminNotificationModel extends Model {
     return $Reviews->avg_review;
   }
 
+  public function similarMatchUserName(){
+    $data = User::find($this->user_id);
+         if(empty($data))
+         {
+            return '';
+         }
+         return $data->name.' '.$data->last_name;
+  }
   public function companyUserName(){
      $data = User::find($this->user_id);
          if(empty($data))
@@ -194,6 +212,14 @@ class AdminNotificationModel extends Model {
          return $data->name.' '.$data->last_name;
     }
   public function companyUserEmail(){
+    $data = User::find($this->user_id); 
+       if(empty($data))
+       {
+          return '';
+       }
+       return $data->email;
+  } 
+  public function similarMatchUserEmail(){
     $data = User::find($this->user_id); 
        if(empty($data))
        {

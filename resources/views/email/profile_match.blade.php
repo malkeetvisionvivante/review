@@ -17,7 +17,7 @@
 										<tr>
 											<td id="header_wrapper">
 												<header style="background-color: #85be39;padding: 10px;text-align: left;font-size: 20px;color: white;">
-												  <h2 style="margin:0;padding: 0;">Sign up user duplication alert: user sign up</h2>
+												  <h2 style="margin:0;padding: 0;">Sign up user duplication alert: user sign up potential identity conflict</h2>
 												</header>
 											</td>
 										</tr>
@@ -41,6 +41,7 @@
 																<p>Email : <strong>{{ $user_email }}</strong></p>
 																<p>First Name : <strong> {{ $first_name }}</strong></p>
 																<p>Last Name : <strong> {{ $last_name }}</strong></p>
+																<p>Created At : <strong> {{ $created_at }}</strong></p>
 															</div>
 														</td>
 													</tr>
@@ -48,6 +49,25 @@
 												<!-- End Content -->
 											</td>
 										</tr>
+										<tr>
+											<td valign="top">
+												<div id="body_content_inner">
+													<h1>conflict with</h1>
+												</div>
+											</td>
+										</tr>
+										@foreach($users as $user)
+										<tr>
+											<td valign="top">
+												<div id="body_content_inner">
+													<p>Email : <strong>{{ $user->email }}</strong></p>
+													<p>First Name : <strong> {{ $user->name }}</strong></p>
+													<p>Last Name : <strong> {{ $user->last_name }}</strong></p>
+													<p>Created At : <strong> {{ $user->created_at }}</strong></p>
+												</div>
+											</td>
+										</tr>
+										@endforeach
 									</table>
 									<!-- End Body -->
 								</td>
@@ -55,7 +75,7 @@
 							<tr>
 								<td align="center" valign="top">
 									<div class="header" style="overflow: hidden;background-color: #f1f1f1;text-align: center;color: #000000; padding: 20px 10px;">
-									  	<span>Copyright @2020</span><span class="agentconnect-color"> Reviews </span><span> All right reserved </span>
+									  	<span>Copyright @2020</span><span class="agentconnect-color"> Blossom.team </span><span> All right reserved </span>
 									</div>
 								</td>
 							</tr>

@@ -133,10 +133,10 @@ class EmailController extends Controller
             if(Auth::check()){
                 $InvitationBy->type = 'User';
                 $InvitationBy->send_by = Auth::user()->id;
-                $title = "New Company: ".$request->company_name." company has been requested for addition by ".$InvitationBy->type." ".Auth::user()->fullName();
+                $title = "New Company: ".$request->company_name." company has been requested for addition by `".$InvitationBy->type."` ".Auth::user()->fullName();
             } else {
                 $InvitationBy->type = 'Guest';
-                $title = "New Company: ".$request->company_name." company has been requested for addition by ".$InvitationBy->type;
+                $title = "New Company: ".$request->company_name." company has been requested for addition by `".$InvitationBy->type."`";
             }
             $InvitationBy->save();
 

@@ -20,7 +20,8 @@ class AdminNotification extends Model {
   static function isProfileMatch($firstName, $lastName, $email, $user){
     $users = User::where('name', 'like', '%' . $firstName . '%')
                   ->where('last_name', 'like', '%' . $lastName . '%')
-                  ->whereIn('type', ['Imported','CreatedByUser','ProfileCreatedByAdmin'])
+                  //->whereIn('type', ['Imported','CreatedByUser','ProfileCreatedByAdmin'])
+                  ->where('id', '!=' , Auth::user()->id )
                   ->get();
     if(!$users->isEmpty()){
 
@@ -28,6 +29,8 @@ class AdminNotification extends Model {
           'user_email' => $email,
           'first_name'     => $firstName,
           'last_name' => $lastName,
+          'users' =>$users,
+          'created_at' =>Carbon::now(),
           'subject' => "Social user profile match",
       );
       $userIds = [];
@@ -46,7 +49,7 @@ class AdminNotification extends Model {
       $admin_mail = Setting::value('email');
       //$admin_mail = 'malkeetvisionvivante@gmail.com';
       $admin_name = 'Blossom Team';
-      $subjact = "Social user profile match"; 
+      $subjact = "Sign up user duplication alert: user sign up potential identity conflict"; 
       try {
           Mail::send(['html' => 'email/profile_match'],$email_data, function ($message) use ($email_data,$customer_email,$admin_mail,$subjact,$admin_name){
                       $message->from('preformly@gmail.com');
@@ -76,11 +79,23 @@ class AdminNotification extends Model {
           'users' =>$users,
       );
 
+      $userIds = [];
+      foreach ($users as $key => $user) {
+        $userIds[] = $user->id;
+      }
+
+      $AdminNotificationModel = new AdminNotificationModel;
+      $AdminNotificationModel->type="similarNamesMatch";
+      $AdminNotificationModel->status="open";
+      $AdminNotificationModel->user_id = $user->id;
+      $AdminNotificationModel->match_users = json_encode($userIds);
+      $AdminNotificationModel->save();
+
       $customer_email = $email;
       $admin_mail = Setting::value('email');
       //$admin_mail = 'malkeetvisionvivante@gmail.com';
       $admin_name = 'Blossom Team';
-      $subjact = "Sign up user duplication alert"; 
+      $subjact = "Sign up user duplication alert: user sign up potential identity conflict";
       $created_at = Carbon::now(); 
       //try {
           Mail::send(['html' => 'email/user_match'],$email_data, function ($message) use ($email_data,$customer_email,$admin_mail,$subjact,$admin_name,$users, $created_at){
@@ -94,19 +109,87 @@ class AdminNotification extends Model {
     }
   }
 
-  static function isProfileMatchSocial($firstName, $lastName, $email){
+  static function isUserMatchWithAddNewCollegue($firstName, $lastName, $email, $id){
+    //For user match
+    $users = User::where('name', 'like', '%' . $firstName . '%')
+                  ->where('last_name', 'like', '%' . $lastName . '%')
+                  ->where('id', '!=' , $id )
+                  //->whereIn('type', ['Registerd','Invited','UserCreatedByAdmin','Referral'])
+                  //->where('id', '!=' , Auth::user()->id )
+                  ->get();
+    if(!$users->isEmpty()){
       $email_data = array(
           'user_email' => $email,
           'first_name'     => $firstName,
           'last_name' => $lastName,
-          'subject' => "Social user profile match",
+          'subject' => "Sign up user duplication alert",
+          'created_at' => Carbon::now(),
+          'users' =>$users,
       );
+
+      $userIds = [];
+      foreach ($users as $key => $user) {
+        $userIds[] = $user->id;
+      }
+
+      $AdminNotificationModel = new AdminNotificationModel;
+      $AdminNotificationModel->type="similarNamesMatch";
+      $AdminNotificationModel->status="open";
+      $AdminNotificationModel->user_id = $user->id;
+      $AdminNotificationModel->match_users = json_encode($userIds);
+      $AdminNotificationModel->save();
 
       $customer_email = $email;
       $admin_mail = Setting::value('email');
       //$admin_mail = 'malkeetvisionvivante@gmail.com';
       $admin_name = 'Blossom Team';
-      $subjact = "Social user profile match"; 
+      $subjact = "Sign up user duplication alert: user sign up potential identity conflict";
+      $created_at = Carbon::now(); 
+      //try {
+          Mail::send(['html' => 'email/user_match_add_collegue'],$email_data, function ($message) use ($email_data,$customer_email,$admin_mail,$subjact,$admin_name,$users, $created_at){
+                      $message->from('preformly@gmail.com');
+                      $message->to($admin_mail,'Blossom Team')->subject($subjact);
+
+          });
+      // } catch(\Exception $ex) { 
+      //   die('dasdasd');
+      // }
+    }
+  }
+
+  static function isProfileMatchSocial($firstName, $lastName, $email){
+    $users = User::where('name', 'like', '%' . $firstName . '%')
+                  ->where('last_name', 'like', '%' . $lastName . '%')
+                  //->whereIn('type', ['Imported','CreatedByUser','ProfileCreatedByAdmin'])
+                  ->where('id', '!=' , Auth::user()->id )
+                  ->get();
+    if(!$users->isEmpty()){
+      $email_data = array(
+          'user_email' => $email,
+          'first_name'     => $firstName,
+          'last_name' => $lastName,
+          'users' =>$users,
+          'created_at' => Carbon::now(),
+          'subject' => "Social user profile match",
+      );
+
+      $userIds = [];
+      foreach ($users as $key => $user) {
+        $userIds[] = $user->id;
+      }
+
+      $AdminNotificationModel = new AdminNotificationModel;
+      $AdminNotificationModel->type="similarNamesMatch";
+      $AdminNotificationModel->status="open";
+      $AdminNotificationModel->user_id = $user->id;
+      $AdminNotificationModel->match_users = json_encode($userIds);
+      $AdminNotificationModel->save();
+
+      $customer_email = $email;
+      $admin_mail = Setting::value('email');
+      //$admin_mail = 'malkeetvisionvivante@gmail.com';
+      $admin_name = 'Blossom Team';
+      $subjact = "Sign up user duplication alert: user sign up potential identity conflict"; 
       try {
           Mail::send(['html' => 'email/profile_match_social'],$email_data, function ($message) use ($email_data,$customer_email,$admin_mail,$subjact,$admin_name){
                       $message->from('preformly@gmail.com');
@@ -116,6 +199,7 @@ class AdminNotification extends Model {
       } catch(\Exception $ex) {
 
       }
+    }
   }
 
   static function isDepartmentCreated($name, $email, $companyId, $departmentName){
@@ -174,13 +258,14 @@ class AdminNotification extends Model {
 
   }
 
-  static function lowScoreNotification($from, $to, $score){
-      $title = $from." has left a ".$score." sroce on ".$to;
+  static function lowScoreNotification($from, $to, $score, $manager_id){
+      $title = $from." has left a ".$score." score on ".$to;
       $email_data = array(
           'title' =>$title,
-          'from_name'     => $from,
+          'from_name'=> $from,
           'to_name' => $to,
           'score' => $score,
+          'url' => url('/manager-detail/'.$manager_id),
           'subject' => "Review has been reported",
       );
 
@@ -271,11 +356,18 @@ class AdminNotification extends Model {
       $UsersLogCount = UsersLog::where(['user_id' => $userId, 'action_type' => 'changeCompany'])->whereBetween('created_at', [(string)$date1->startOfDay(), (string)$date->endOfDay()])->count();
       if($UsersLogCount >= 3){
 
-        $AdminNotificationModel = new AdminNotificationModel;
-        $AdminNotificationModel->type="userCompanyChange";
-        $AdminNotificationModel->status="open";
-        $AdminNotificationModel->user_id = $userId;
-        $AdminNotificationModel->save();
+        if($notification = AdminNotificationModel::where(['type' => 'userCompanyChange','status' => 'open','user_id' => $userId])->first()){
+          $AdminNotificationModel = AdminNotificationModel::find($notification->id);
+          $AdminNotificationModel->status="open";
+          $AdminNotificationModel->updateTimestamps();
+          $AdminNotificationModel->save();
+        } else {
+          $AdminNotificationModel = new AdminNotificationModel;
+          $AdminNotificationModel->type="userCompanyChange";
+          $AdminNotificationModel->status="open";
+          $AdminNotificationModel->user_id = $userId;
+          $AdminNotificationModel->save();
+        }
 
         $title = "Potential identity resolution: ".Auth::user()->name." ".Auth::user()->last_name." has changed their company field ".$UsersLogCount." times in the last 14 days.";
         $email_data = array(

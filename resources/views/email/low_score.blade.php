@@ -40,6 +40,7 @@
                                 <p>Review On : <strong>{{ $to_name }}</strong></p>
                                 <p>Review By : <strong>{{ $from_name }}</strong></p>
                                 <p>Score : <strong>{{ $score }}</strong></p>
+                                <p><a href="{{ $url }}">Open Review</a></p>
                               </div>
                             </td>
                           </tr>
